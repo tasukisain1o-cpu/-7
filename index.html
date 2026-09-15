@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Между Нами — стань лучше к встрече</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bordo:#6B1F2E;
+  --bordo-dark:#4A1420;
+  --bordo-light:#8C3A4A;
+  --cream:#FBF7F2;
+  --cream-2:#F5EDE4;
+  --gold:#C9A961;
+  --gold-soft:#E3D2A8;
+  --text:#2B1A1F;
+  --muted:#8A7A7E;
+  --shadow:0 8px 30px rgba(107,31,46,.08);
+  --shadow-lg:0 20px 60px rgba(107,31,46,.15);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--cream);
+  color:var(--text);
+  line-height:1.6;
+  overflow-x:hidden;
+  background-image:
+    radial-gradient(circle at 10% 0%, rgba(201,169,97,.08), transparent 40%),
+    radial-gradient(circle at 90% 100%, rgba(107,31,46,.06), transparent 40%);
+}
+h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:600;color:var(--bordo-dark);letter-spacing:-.01em}
+
+.lace-frame{
+  position:fixed;inset:0;pointer-events:none;z-index:1;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'><g fill='none' stroke='%23C9A961' stroke-width='0.8' opacity='0.35'><circle cx='60' cy='60' r='8'/><circle cx='60' cy='60' r='16'/><circle cx='60' cy='60' r='24'/><path d='M60 36 Q72 48 60 60 Q48 48 60 36'/><path d='M60 84 Q72 72 60 60 Q48 72 60 84'/><path d='M36 60 Q48 48 60 60 Q48 72 36 60'/><path d='M84 60 Q72 48 60 60 Q72 72 84 60'/></g></svg>");
+  background-size:120px 120px;
+  opacity:.5;
+  mask-image:linear-gradient(180deg,transparent 0,black 15%,black 85%,transparent 100%);
+}
+.lace-top,.lace-bottom{
+  position:fixed;left:0;right:0;height:40px;z-index:2;pointer-events:none;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='40' viewBox='0 0 80 40'><g fill='none' stroke='%23FFFFFF' stroke-width='1.5'><path d='M0 40 Q10 20 20 40 Q30 20 40 40 Q50 20 60 40 Q70 20 80 40'/><circle cx='10' cy='32' r='2' fill='%23FFFFFF'/><circle cx='30' cy='32' r='2' fill='%23FFFFFF'/><circle cx='50' cy='32' r='2' fill='%23FFFFFF'/><circle cx='70' cy='32' r='2' fill='%23FFFFFF'/></g></svg>");
+  background-repeat:repeat-x;background-size:80px 40px;
+}
+.lace-top{top:0}
+.lace-bottom{bottom:0;transform:scaleY(-1)}
+
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px;position:relative;z-index:3}
+
+header{padding:48px 0 24px;text-align:center;position:relative}
+.brand{font-family:'Fraunces',serif;font-size:13px;letter-spacing:.5em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:8px}
+h1.title{font-size:clamp(38px,6vw,64px);line-height:1.05;font-style:italic}
+h1.title .amp{color:var(--bordo);font-style:normal}
+.subtitle{color:var(--muted);margin-top:14px;font-size:16px;max-width:520px;margin-left:auto;margin-right:auto}
+
+.timer-card{
+  background:linear-gradient(135deg,var(--bordo) 0%,var(--bordo-dark) 100%);
+  border-radius:24px;padding:44px 32px;margin-top:36px;
+  color:#fff;text-align:center;position:relative;overflow:hidden;
+  box-shadow:var(--shadow-lg);
+}
+.timer-card::before{content:"";position:absolute;inset:12px;border:1px solid rgba(255,255,255,.25);border-radius:16px;pointer-events:none}
+.timer-card::after{
+  content:"";position:absolute;inset:0;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><g fill='none' stroke='%23FFFFFF' stroke-width='0.6' opacity='0.12'><circle cx='50' cy='50' r='10'/><circle cx='50' cy='50' r='20'/><circle cx='50' cy='50' r='30'/><path d='M50 20 Q65 35 50 50 Q35 35 50 20'/><path d='M50 80 Q65 65 50 50 Q35 65 50 80'/></g></svg>");
+  background-size:100px;pointer-events:none;
+}
+.timer-label{font-size:13px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:16px;position:relative}
+.timer-display{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;position:relative}
+.timer-unit{min-width:80px}
+.timer-num{font-family:'Fraunces',serif;font-size:clamp(40px,7vw,72px);font-weight:600;font-style:italic;line-height:1}
+.timer-cap{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-soft);margin-top:8px}
+.timer-progress{margin-top:32px;height:6px;background:rgba(255,255,255,.15);border-radius:99px;overflow:hidden;position:relative}
+.timer-progress-bar{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-soft));border-radius:99px;transition:width .6s ease}
+.timer-meta{margin-top:18px;font-size:14px;color:var(--gold-soft);position:relative}
+
+.date-panel{
+  background:#fff;border:1px solid rgba(201,169,97,.3);
+  border-radius:20px;padding:24px;margin-top:24px;
+  display:flex;gap:20px;flex-wrap:wrap;justify-content:center;align-items:end;
+  box-shadow:var(--shadow);
+}
+.date-field{display:flex;flex-direction:column;gap:6px;min-width:180px;flex:1}
+.date-field label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.date-field input{font-family:'Inter',sans-serif;font-size:15px;color:var(--text);padding:12px 14px;border-radius:12px;border:1px solid rgba(201,169,97,.35);background:var(--cream);transition:all .2s}
+.date-field input:focus{outline:none;border-color:var(--bordo);background:#fff}
+
+.profiles{display:flex;justify-content:center;align-items:center;gap:32px;margin-top:40px;flex-wrap:wrap}
+.profile{display:flex;flex-direction:column;align-items:center;gap:12px;position:relative}
+.avatar-ring{width:110px;height:110px;border-radius:50%;padding:4px;background:conic-gradient(from 0deg,var(--gold),var(--gold-soft),var(--gold));box-shadow:0 8px 24px rgba(107,31,46,.15);position:relative}
+.avatar-ring::after{content:"";position:absolute;inset:-8px;border-radius:50%;border:1px dashed rgba(201,169,97,.5)}
+.avatar{width:100%;height:100%;border-radius:50%;object-fit:cover;background:var(--cream-2);display:block;border:3px solid var(--cream)}
+.avatar-upload{position:absolute;bottom:0;right:0;width:34px;height:34px;border-radius:50%;background:var(--bordo);color:#fff;display:grid;place-items:center;cursor:pointer;border:3px solid var(--cream);font-size:14px;transition:transform .2s}
+.avatar-upload:hover{transform:scale(1.1)}
+.profile-name{font-family:'Fraunces',serif;font-size:20px;font-weight:600;color:var(--bordo-dark);background:transparent;border:none;text-align:center;width:120px;border-bottom:1px dashed transparent;transition:border-color .2s}
+.profile-name:focus{outline:none;border-bottom-color:var(--gold)}
+.profile-role{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.heart-between{font-size:28px;color:var(--bordo);opacity:.6;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+
+.section-head{text-align:center;margin:64px 0 32px}
+.section-eyebrow{font-size:12px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:10px}
+.section-title{font-size:clamp(28px,4vw,42px);font-style:italic}
+.section-desc{color:var(--muted);max-width:600px;margin:14px auto 0;font-size:15px}
+
+.directions{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin-bottom:48px}
+.dir{background:#fff;border:1px solid rgba(201,169,97,.25);border-radius:18px;padding:24px 16px;text-align:center;cursor:pointer;transition:all .25s ease;position:relative;overflow:hidden}
+.dir::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--bordo),var(--gold));transform:scaleX(0);transition:transform .3s;transform-origin:left}
+.dir:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--gold)}
+.dir:hover::before{transform:scaleX(1)}
+.dir.active{background:var(--bordo);color:#fff;border-color:var(--bordo)}
+.dir.active .dir-icon{filter:brightness(0) invert(1)}
+.dir.active .dir-name,.dir.active .dir-count{color:#fff}
+.dir-icon{font-size:30px;margin-bottom:10px;display:block}
+.dir-name{font-family:'Fraunces',serif;font-size:15px;font-weight:600;color:var(--bordo-dark);margin-bottom:4px}
+.dir-count{font-size:12px;color:var(--muted);letter-spacing:.05em}
+
+.duration-filter{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:32px}
+.dur-btn{background:#fff;border:1px solid rgba(201,169,97,.35);border-radius:99px;padding:10px 22px;font-size:13px;font-weight:500;cursor:pointer;color:var(--bordo-dark);transition:all .2s;font-family:'Inter',sans-serif}
+.dur-btn:hover{border-color:var(--gold);background:var(--cream-2)}
+.dur-btn.active{background:var(--bordo);color:#fff;border-color:var(--bordo)}
+
+.programs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin-bottom:64px}
+.prog-card{background:#fff;border:1px solid rgba(201,169,97,.25);border-radius:20px;padding:24px;cursor:pointer;transition:all .25s ease;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:14px;animation:fadeUp .5s ease backwards}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.prog-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--bordo),var(--gold));transform:scaleX(0);transition:transform .35s;transform-origin:left}
+.prog-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--gold)}
+.prog-card:hover::before{transform:scaleX(1)}
+.prog-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.prog-icon{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--cream-2),#fff);border:1px solid rgba(201,169,97,.3);display:grid;place-items:center;font-size:24px;flex-shrink:0}
+.prog-badge{font-size:11px;font-weight:600;letter-spacing:.05em;padding:5px 10px;border-radius:99px;background:var(--cream-2);color:var(--bordo);border:1px solid rgba(201,169,97,.35);white-space:nowrap}
+.prog-title{font-family:'Fraunces',serif;font-size:17px;font-weight:600;color:var(--bordo-dark);line-height:1.3}
+.prog-desc{font-size:13px;color:var(--muted);line-height:1.5;flex-grow:1}
+.prog-tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-size:10px;letter-spacing:.05em;text-transform:uppercase;padding:4px 8px;border-radius:6px;font-weight:600;background:rgba(107,31,46,.06);color:var(--bordo)}
+.tag.sport{background:rgba(232,115,74,.12);color:#B8541F}
+.tag.food{background:rgba(91,140,126,.12);color:#3D6B5C}
+.tag.mind{background:rgba(107,31,46,.1);color:var(--bordo)}
+.tag.will{background:rgba(140,58,74,.12);color:var(--bordo-light)}
+.tag.money{background:rgba(201,169,97,.18);color:#8A6E2B}
+.tag.love{background:rgba(196,91,124,.12);color:#A63F63}
+.tag.meet{background:rgba(74,20,32,.1);color:var(--bordo-dark)}
+.prog-foot{display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px dashed rgba(201,169,97,.35)}
+.prog-days{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.prog-days strong{color:var(--bordo);font-family:'Fraunces',serif;font-size:16px}
+.prog-btn{background:var(--bordo);color:#fff;border:none;padding:8px 16px;border-radius:99px;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif;letter-spacing:.03em}
+.prog-btn:hover{background:var(--bordo-dark);transform:scale(1.05)}
+
+.empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--muted)}
+.empty-icon{font-size:48px;margin-bottom:16px;opacity:.5}
+.results-count{text-align:center;color:var(--muted);font-size:14px;margin-bottom:24px}
+.results-count strong{color:var(--bordo);font-family:'Fraunces',serif;font-size:18px}
+.load-more{display:block;margin:0 auto 64px;background:transparent;border:1px solid var(--bordo);color:var(--bordo);padding:14px 32px;border-radius:99px;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif;letter-spacing:.05em}
+.load-more:hover{background:var(--bordo);color:#fff}
+
+.my-path{margin-top:56px;padding:32px;background:#fff;border-radius:24px;border:1px solid rgba(201,169,97,.3);box-shadow:var(--shadow)}
+.my-path-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px;flex-wrap:wrap;gap:12px}
+.my-path-title{font-family:'Fraunces',serif;font-size:24px;font-style:italic;color:var(--bordo-dark)}
+.streak-badge{background:linear-gradient(135deg,var(--bordo),var(--bordo-dark));color:#fff;padding:8px 16px;border-radius:99px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px}
+.path-list{display:flex;flex-direction:column;gap:14px}
+.path-item{padding:18px;border-radius:16px;background:var(--cream);border:1px solid rgba(201,169,97,.25);display:flex;flex-direction:column;gap:10px}
+.path-item-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.path-item-title{font-family:'Fraunces',serif;font-size:17px;color:var(--bordo-dark);font-weight:600}
+.path-item-pct{font-size:13px;color:var(--bordo);font-weight:600}
+.path-bar{height:8px;background:var(--cream-2);border-radius:99px;overflow:hidden}
+.path-bar-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--bordo));transition:width .5s ease}
+.path-empty{text-align:center;color:var(--muted);padding:24px;font-size:14px;font-style:italic}
+.path-remove{background:transparent;border:none;color:var(--muted);cursor:pointer;font-size:18px;padding:0 6px;transition:color .2s}
+.path-remove:hover{color:var(--bordo)}
+
+.modal-overlay{position:fixed;inset:0;background:rgba(43,26,31,.55);backdrop-filter:blur(6px);z-index:100;display:none;align-items:center;justify-content:center;padding:20px;animation:fadeIn .25s ease}
+.modal-overlay.open{display:flex}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modal{background:var(--cream);border-radius:24px;max-width:640px;width:100%;max-height:88vh;overflow-y:auto;position:relative;box-shadow:var(--shadow-lg);border:1px solid rgba(201,169,97,.35);animation:slideUp .35s cubic-bezier(.2,.9,.3,1)}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px) scale(.98)}to{opacity:1;transform:none}}
+.modal-head{background:linear-gradient(135deg,var(--bordo),var(--bordo-dark));color:#fff;padding:36px 32px 28px;border-radius:24px 24px 0 0;position:relative;overflow:hidden}
+.modal-head::after{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'><g fill='none' stroke='%23FFFFFF' stroke-width='0.5' opacity='0.15'><circle cx='40' cy='40' r='8'/><circle cx='40' cy='40' r='16'/><circle cx='40' cy='40' r='24'/><path d='M40 16 Q52 28 40 40 Q28 28 40 16'/><path d='M40 64 Q52 52 40 40 Q28 52 40 64'/></g></svg>");background-size:80px;pointer-events:none}
+.modal-close{position:absolute;top:18px;right:18px;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.15);color:#fff;border:none;font-size:18px;cursor:pointer;z-index:2;transition:all .2s;display:grid;place-items:center}
+.modal-close:hover{background:rgba(255,255,255,.3);transform:rotate(90deg)}
+.modal-icon{font-size:44px;margin-bottom:12px;position:relative}
+.modal-title{font-family:'Fraunces',serif;font-size:28px;font-weight:600;font-style:italic;position:relative;line-height:1.2}
+.modal-sub{color:var(--gold-soft);font-size:14px;margin-top:10px;position:relative;display:flex;gap:16px;flex-wrap:wrap}
+.modal-sub span{display:flex;align-items:center;gap:6px}
+.modal-body{padding:28px 32px 32px}
+.modal-desc{color:var(--muted);font-size:15px;line-height:1.6;padding-bottom:20px;border-bottom:1px dashed rgba(201,169,97,.4);margin-bottom:24px}
+.day-list{display:flex;flex-direction:column;gap:10px}
+.day-item{display:flex;align-items:flex-start;gap:14px;padding:14px 16px;border-radius:14px;background:#fff;border:1px solid rgba(201,169,97,.25);transition:all .2s;cursor:pointer}
+.day-item:hover{border-color:var(--gold);transform:translateX(4px)}
+.day-item.done{background:rgba(91,140,126,.06);border-color:rgba(91,140,126,.4)}
+.day-item.done .day-text{text-decoration:line-through;color:var(--muted)}
+.day-check{width:24px;height:24px;border-radius:50%;border:2px solid var(--gold);flex-shrink:0;display:grid;place-items:center;font-size:13px;color:#fff;transition:all .2s;margin-top:1px}
+.day-item.done .day-check{background:var(--bordo);border-color:var(--bordo)}
+.day-num{font-family:'Fraunces',serif;font-weight:700;color:var(--bordo);font-size:13px;flex-shrink:0;min-width:52px;padding-top:2px;letter-spacing:.05em}
+.day-text{font-size:14px;color:var(--text);line-height:1.5;flex-grow:1}
+.modal-actions{display:flex;gap:12px;margin-top:28px;padding-top:24px;border-top:1px dashed rgba(201,169,97,.4);flex-wrap:wrap}
+.btn-primary,.btn-ghost{padding:14px 28px;border-radius:99px;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif;letter-spacing:.03em;border:none}
+.btn-primary{background:var(--bordo);color:#fff;flex-grow:1}
+.btn-primary:hover{background:var(--bordo-dark);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--bordo);border:1px solid rgba(107,31,46,.3)}
+.btn-ghost:hover{background:var(--cream-2);border-color:var(--bordo)}
+
+footer{text-align:center;padding:48px 0 32px;border-top:1px dashed rgba(201,169,97,.4);margin-top:40px}
+footer .brand{margin-bottom:10px}
+footer p{color:var(--muted);font-size:13px;font-style:italic}
+
+@media(max-width:640px){
+  .timer-card{padding:32px 20px}
+  .timer-unit{min-width:64px}
+  .modal-head{padding:28px 22px 22px}
+  .modal-body{padding:22px 22px 26px}
+  .modal-title{font-size:22px}
+  .profiles{gap:20px}
+  .avatar-ring{width:88px;height:88px}
+}
+</style>
+</head>
+<body>
+
+<div class="lace-frame"></div>
+<div class="lace-top"></div>
+<div class="lace-bottom"></div>
+
+<div class="wrap">
+
+  <header>
+    <div class="brand">Между Нами</div>
+    <h1 class="title">До встречи <span class="amp">—</span> стань лучше</h1>
+    <p class="subtitle">Ставь дату встречи. Выбирай программу. Приходи к ней другим человеком.</p>
+  </header>
+
+  <div class="timer-card">
+    <div class="timer-label">До встречи осталось</div>
+    <div class="timer-display">
+      <div class="timer-unit"><div class="timer-num" id="days">06</div><div class="timer-cap">дней</div></div>
+      <div class="timer-unit"><div class="timer-num" id="hours">04</div><div class="timer-cap">часов</div></div>
+      <div class="timer-unit"><div class="timer-num" id="minutes">23</div><div class="timer-cap">минут</div></div>
+      <div class="timer-unit"><div class="timer-num" id="seconds">17</div><div class="timer-cap">секунд</div></div>
+    </div>
+    <div class="timer-progress"><div class="timer-progress-bar" id="progressBar"></div></div>
+    <div class="timer-meta" id="timerMeta">Загрузка...</div>
+  </div>
+
+  <div class="date-panel">
+    <div class="date-field">
+      <label>Дата А — сейчас</label>
+      <input type="datetime-local" id="dateA">
+    </div>
+    <div class="date-field">
+      <label>Дата Б — встреча</label>
+      <input type="datetime-local" id="dateB">
+    </div>
+  </div>
+
+  <div class="profiles">
+    <div class="profile">
+      <div class="avatar-ring">
+        <img class="avatar" id="avatarMe" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100'><rect width='100' height='100' fill='%23F5EDE4'/><text x='50' y='60' font-size='40' text-anchor='middle' fill='%236B1F2E' font-family='serif'>М</text></svg>" alt="Я">
+        <label class="avatar-upload" for="uploadMe">＋</label>
+        <input type="file" id="uploadMe" accept="image/*" hidden>
+      </div>
+      <input class="profile-name" id="nameMe" value="Миша" maxlength="12">
+      <div class="profile-role">Ты</div>
+    </div>
+
+    <div class="heart-between">❤</div>
+
+    <div class="profile">
+      <div class="avatar-ring">
+        <img class="avatar" id="avatarHer" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100'><rect width='100' height='100' fill='%23F5EDE4'/><text x='50' y='60' font-size='40' text-anchor='middle' fill='%236B1F2E' font-family='serif'>А</text></svg>" alt="Она">
+        <label class="avatar-upload" for="uploadHer">＋</label>
+        <input type="file" id="uploadHer" accept="image/*" hidden>
+      </div>
+      <input class="profile-name" id="nameHer" value="Аня" maxlength="12">
+      <div class="profile-role">Она</div>
+    </div>
+  </div>
+
+  <div class="section-head" id="programs">
+    <div class="section-eyebrow">Выбери путь</div>
+    <h2 class="section-title">Кем стать к встрече</h2>
+    <p class="section-desc">Более 200 программ в 7 направлениях. Выбери 1–3. Иди по дням. Не сбивайся.</p>
+  </div>
+
+  <div class="directions" id="directions">
+    <div class="dir active" data-dir="all"><span class="dir-icon">✨</span><div class="dir-name">Все</div><div class="dir-count">Все</div></div>
+    <div class="dir" data-dir="sport"><span class="dir-icon">💪</span><div class="dir-name">Спорт</div><div class="dir-count">Спорт</div></div>
+    <div class="dir" data-dir="food"><span class="dir-icon">🥗</span><div class="dir-name">Питание</div><div class="dir-count">Питание</div></div>
+    <div class="dir" data-dir="mind"><span class="dir-icon">🧠</span><div class="dir-name">Развитие</div><div class="dir-count">Развитие</div></div>
+    <div class="dir" data-dir="will"><span class="dir-icon">🧘</span><div class="dir-name">Характер</div><div class="dir-count">Характер</div></div>
+    <div class="dir" data-dir="money"><span class="dir-icon">💰</span><div class="dir-name">Дело</div><div class="dir-count">Дело</div></div>
+    <div class="dir" data-dir="love"><span class="dir-icon">💞</span><div class="dir-name">Отношения</div><div class="dir-count">Отношения</div></div>
+    <div class="dir" data-dir="meet"><span class="dir-icon">🎯</span><div class="dir-name">Встреча</div><div class="dir-count">Встреча</div></div>
+  </div>
+
+  <div class="duration-filter" id="durationFilter">
+    <button class="dur-btn active" data-dur="all">Любой срок</button>
+    <button class="dur-btn" data-dur="7">7 дней</button>
+    <button class="dur-btn" data-dur="14">14 дней</button>
+    <button class="dur-btn" data-dur="21">21 день</button>
+    <button class="dur-btn" data-dur="30">30 дней</button>
+  </div>
+
+  <div class="results-count">Найдено <strong id="countNum">0</strong> программ</div>
+  <div class="programs-grid" id="programsGrid"></div>
+  <button class="load-more" id="loadMore" style="display:none">Показать ещё программы</button>
+
+  <div class="my-path" id="myPath">
+    <div class="my-path-head">
+      <div class="my-path-title">Мой путь к встрече</div>
+      <div class="streak-badge" id="streakBadge">🔥 Streak: 0 дней</div>
+    </div>
+    <div class="path-list" id="pathList">
+      <div class="path-empty">Пока ничего не выбрано. Открой программу и нажми «Начать программу».</div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="brand">Между Нами</div>
+    <p>«Время между встречами — тоже вместе»</p>
+  </footer>
+
+</div>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <div class="modal-head">
+      <button class="modal-close" id="modalClose">✕</button>
+      <div class="modal-icon" id="modalIcon">💪</div>
+      <h3 class="modal-title" id="modalTitle">Программа</h3>
+      <div class="modal-sub">
+        <span>📅 <b id="modalDays">7 дней</b></span>
+        <span>🎯 <b id="modalTag">Экспресс</b></span>
+      </div>
+    </div>
+    <div class="modal-body">
+      <p class="modal-desc" id="modalDesc">Описание</p>
+      <div class="day-list" id="dayList"></div>
+      <div class="modal-actions">
+        <button class="btn-primary" id="startProgram">Начать программу</button>
+        <button class="btn-ghost" id="closeModalBtn">Закрыть</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+// ============ БАЗА ПРОГРАММ (240) ============
+const PROGRAMS = [
+  // СПОРТ 7
+  {id:1,dir:'sport',days:7,icon:'💪',title:'100 отжиманий за неделю',desc:'С 20 до 100 с прогрессией. Каждый день сложнее вчерашнего.',tag:'Экспресс'},
+  {id:2,dir:'sport',days:7,icon:'🔥',title:'Пресс за 7 дней',desc:'Скручивания + планка. Прогрессия по дням, финал — кубики.',tag:'Экспресс'},
+  {id:3,dir:'sport',days:7,icon:'⏱',title:'Планка 3 минуты',desc:'Старт 30 сек, +30 сек в день. К финалу держишь 3 минуты.',tag:'Экспресс'},
+  {id:4,dir:'sport',days:7,icon:'🦵',title:'200 приседаний',desc:'Лестница по дням. Ноги, ягодицы, выносливость.',tag:'Экспресс'},
+  {id:5,dir:'sport',days:7,icon:'🏃',title:'5 км бег за неделю',desc:'Интервалы ходьба/бег. Финал — 5 км без остановки.',tag:'Экспресс'},
+  // СПОРТ 14
+  {id:6,dir:'sport',days:14,icon:'💪',title:'200 отжиманий за 14 дней',desc:'Силовая прогрессия. Волны лёгких и тяжёлых дней.',tag:'Сила'},
+  {id:7,dir:'sport',days:14,icon:'🏋',title:'10 подтягиваний за 2 недели',desc:'Негативы → австралийские → полные. Прогрессия по неделям.',tag:'Сила'},
+  {id:8,dir:'sport',days:14,icon:'⏱',title:'Планка 5 минут',desc:'С 30 сек до 5 минут за 14 дней. Статика, кор, воля.',tag:'Сила'},
+  {id:9,dir:'sport',days:14,icon:'🏃',title:'10 км бег за 2 недели',desc:'Рост дистанции +10% в день. Финал — 10 км.',tag:'Кардио'},
+  {id:10,dir:'sport',days:14,icon:'🦵',title:'500 приседаний',desc:'Прогрессия с днями отдыха. Ноги как сталь.',tag:'Сила'},
+  // СПОРТ 21
+  {id:11,dir:'sport',days:21,icon:'💪',title:'300 отжиманий за 21 день',desc:'С 10 до 300. Реальный рост силы и объёма.',tag:'Трансформация'},
+  {id:12,dir:'sport',days:21,icon:'🏋',title:'15 подтягиваний',desc:'Три недели прогрессии. Финал — 15 чистых.',tag:'Трансформация'},
+  {id:13,dir:'sport',days:21,icon:'⏱',title:'Планка 7 минут',desc:'От 30 сек до 7 минут. Кор, воля, спина.',tag:'Трансформация'},
+  {id:14,dir:'sport',days:21,icon:'🏃',title:'15 км бег',desc:'Три недели роста. Полуфинал перед марафоном.',tag:'Кардио'},
+  {id:15,dir:'sport',days:21,icon:'🧘',title:'Йога 21 день',desc:'Ежедневная практика. Гибкость, спокойствие, дыхание.',tag:'Гибкость'},
+  // СПОРТ 30
+  {id:16,dir:'sport',days:30,icon:'💪',title:'100 отжиманий за 30 дней',desc:'Классическая программа. С 5 до 100 в одном подходе.',tag:'Трансформация'},
+  {id:17,dir:'sport',days:30,icon:'🏋',title:'20 подтягиваний',desc:'Месяц работы. Финал — 20 чистых подтягиваний.',tag:'Сила'},
+  {id:18,dir:'sport',days:30,icon:'⏱',title:'Планка 10 минут',desc:'Месяц статики. 10 минут — уровень зверя.',tag:'Трансформация'},
+  {id:19,dir:'sport',days:30,icon:'🏃',title:'Марафон: 21 км',desc:'Месяц подготовки. Финал — полумарафон.',tag:'Кардио'},
+  {id:20,dir:'sport',days:30,icon:'🔥',title:'Тело мечты за месяц',desc:'Спорт + питание + сон. Полная перезагрузка.',tag:'Трансформация'},
+  // ПИТАНИЕ 7
+  {id:21,dir:'food',days:7,icon:'🚫',title:'Детокс от сахара',desc:'7 дней без сладкого. Кожа, сон, энергия.',tag:'Детокс'},
+  {id:22,dir:'food',days:7,icon:'💧',title:'Вода 2.5 л × 7',desc:'Streak без пропусков. Привычка на всю жизнь.',tag:'Привычка'},
+  {id:23,dir:'food',days:7,icon:'🍳',title:'Домашняя еда × 7',desc:'Неделя без доставки. Готовишь сам.',tag:'Привычка'},
+  {id:24,dir:'food',days:7,icon:'😴',title:'Сон 8 часов × 7',desc:'Режим сна. Подъём и отбой в одно время.',tag:'Режим'},
+  {id:25,dir:'food',days:7,icon:'🥗',title:'Без фастфуда неделю',desc:'Только чистая еда. Организм скажет спасибо.',tag:'Детокс'},
+  // ПИТАНИЕ 14
+  {id:26,dir:'food',days:14,icon:'⚖',title:'Минус 3 кг за 2 недели',desc:'Дефицит + спорт. Реальный результат.',tag:'Похудение'},
+  {id:27,dir:'food',days:14,icon:'🥑',title:'Кето-старт за 2 недели',desc:'Вход в кетоз. Жиры вместо углеводов.',tag:'Диета'},
+  {id:28,dir:'food',days:14,icon:'🚫',title:'Без сахара 14 дней',desc:'Полный отказ. Сложно, но результат виден.',tag:'Детокс'},
+  {id:29,dir:'food',days:14,icon:'🍳',title:'Домашняя еда × 14',desc:'Две недели готовишь сам. Экономия + здоровье.',tag:'Привычка'},
+  {id:30,dir:'food',days:14,icon:'⏰',title:'Режим питания по часам',desc:'Завтрак/обед/ужин в одно время. Дисциплина.',tag:'Режим'},
+  // ПИТАНИЕ 21
+  {id:31,dir:'food',days:21,icon:'⚖',title:'Минус 5 кг за 3 недели',desc:'Три недели дефицита. Новая форма.',tag:'Похудение'},
+  {id:32,dir:'food',days:21,icon:'🥑',title:'Кето 21 день',desc:'Полное погружение. Жиросжигание.',tag:'Диета'},
+  {id:33,dir:'food',days:21,icon:'🚫',title:'Без сахара 21 день',desc:'Привычка закрепляется. Сладкое больше не тянет.',tag:'Детокс'},
+  {id:34,dir:'food',days:21,icon:'🍳',title:'Домашняя еда × 21',desc:'Три недели кухни. Новые навыки готовки.',tag:'Привычка'},
+  {id:35,dir:'food',days:21,icon:'🕐',title:'Интервальное голодание 16/8',desc:'Три недели окна питания. Мозг ясный, тело лёгкое.',tag:'Диета'},
+  // ПИТАНИЕ 30
+  {id:36,dir:'food',days:30,icon:'⚖',title:'Минус 7 кг за месяц',desc:'Месяц полной перестройки питания.',tag:'Похудение'},
+  {id:37,dir:'food',days:30,icon:'🥑',title:'Кето 30 дней',desc:'Полная смена метаболизма.',tag:'Диета'},
+  {id:38,dir:'food',days:30,icon:'🚫',title:'Без сахара месяц',desc:'Месяц чистоты. Ты не узнаешь себя.',tag:'Детокс'},
+  {id:39,dir:'food',days:30,icon:'🍳',title:'Домашняя еда × 30',desc:'Месяц только своя кухня. Новые 30 блюд.',tag:'Привычка'},
+  {id:40,dir:'food',days:30,icon:'💪',title:'Набор массы за месяц',desc:'Профицит + тренировки. +3-5 кг мышц.',tag:'Набор'},
+  // РАЗВИТИЕ 7
+  {id:41,dir:'mind',days:7,icon:'🗣',title:'70 слов языка за неделю',desc:'10 слов в день + повторение. Мини-разговорник.',tag:'Язык'},
+  {id:42,dir:'mind',days:7,icon:'📖',title:'Книга за неделю',desc:'40 страниц в день. Финал — пересказ ей.',tag:'Чтение'},
+  {id:43,dir:'mind',days:7,icon:'📝',title:'Дневник × 7',desc:'Вечером 3 события + 1 вывод. Рефлексия.',tag:'Привычка'},
+  {id:44,dir:'mind',days:7,icon:'🧘',title:'Медитация 10 мин × 7',desc:'Дыхание 4-7-8. Спокойствие каждый день.',tag:'Осознанность'},
+  {id:45,dir:'mind',days:7,icon:'💻',title:'Python: основы за неделю',desc:'Переменные, циклы, функции. Первый скрипт.',tag:'Код'},
+  {id:46,dir:'mind',days:7,icon:'✍️',title:'500 слов текста в день',desc:'Практика письма. Блог или дневник.',tag:'Навык'},
+  {id:47,dir:'mind',days:7,icon:'🎧',title:'Подкаст × 7',desc:'1 подкаст по профессии в день + конспект.',tag:'Знания'},
+  {id:48,dir:'mind',days:7,icon:'🙏',title:'Благодарность × 7',desc:'3 пункта каждый вечер. Меняет мышление.',tag:'Осознанность'},
+  // РАЗВИТИЕ 14
+  {id:49,dir:'mind',days:14,icon:'🗣',title:'150 слов языка за 2 недели',desc:'10/день + фразы. К финалу — диалог.',tag:'Язык'},
+  {id:50,dir:'mind',days:14,icon:'📚',title:'2 книги за 14 дней',desc:'По 30-40 стр/день. Конспект по каждой.',tag:'Чтение'},
+  {id:51,dir:'mind',days:14,icon:'💻',title:'Python: мини-проект',desc:'От идеи до рабочего скрипта за 2 недели.',tag:'Код'},
+  {id:52,dir:'mind',days:14,icon:'🌐',title:'Сайт с нуля за 2 недели',desc:'HTML/CSS/JS. Финал — живой сайт.',tag:'Код'},
+  {id:53,dir:'mind',days:14,icon:'🎸',title:'Гитара: первая песня',desc:'Аккорды + бой. К финалу — играешь ей.',tag:'Музыка'},
+  {id:54,dir:'mind',days:14,icon:'✏️',title:'Рисование: 14 скетчей',desc:'По 1 рисунку в день. Основы формы и тени.',tag:'Творчество'},
+  {id:55,dir:'mind',days:14,icon:'💰',title:'Финансовая грамотность',desc:'Курс/книга. Понять бюджет и инвестиции.',tag:'Деньги'},
+  {id:56,dir:'mind',days:14,icon:'📸',title:'Фотография: 14 дней',desc:'1 фото в день с заданием. Композиция, свет.',tag:'Творчество'},
+  // РАЗВИТИЕ 21
+  {id:57,dir:'mind',days:21,icon:'🗣',title:'300 слов языка за 21 день',desc:'Привычка закрепляется. Финал — мини-диалог.',tag:'Язык'},
+  {id:58,dir:'mind',days:21,icon:'📚',title:'3 книги за 3 недели',desc:'Книга в неделю. Мышление, речь, кругозор.',tag:'Чтение'},
+  {id:59,dir:'mind',days:21,icon:'💻',title:'Python: приложение',desc:'От идеи до рабочего приложения за 21 день.',tag:'Код'},
+  {id:60,dir:'mind',days:21,icon:'🎤',title:'Ораторское мастерство',desc:'Речь, голос, выступления. Каждый день практика.',tag:'Навык'},
+  {id:61,dir:'mind',days:21,icon:'♟',title:'Шахматы: 21 день',desc:'5 задач + 1 партия в день. Рост рейтинга.',tag:'Логика'},
+  {id:62,dir:'mind',days:21,icon:'🧘',title:'Медитация 21 день',desc:'Привычка спокойствия. Сон, фокус, стресс.',tag:'Осознанность'},
+  {id:63,dir:'mind',days:21,icon:'📝',title:'Дневник 21 день',desc:'Утро — план. Вечер — рефлексия и благодарность.',tag:'Привычка'},
+  {id:64,dir:'mind',days:21,icon:'🎨',title:'Дизайн: Figma за 21 день',desc:'Интерфейсы, макеты, прототипы. Практика.',tag:'Творчество'},
+  // РАЗВИТИЕ 30
+  {id:65,dir:'mind',days:30,icon:'🗣',title:'500 слов языка за месяц',desc:'Месяц языка. Финал — 10 фраз ей на встрече.',tag:'Язык'},
+  {id:66,dir:'mind',days:30,icon:'📚',title:'4 книги за месяц',desc:'Книга в неделю. Финал — список из 20 идей.',tag:'Чтение'},
+  {id:67,dir:'mind',days:30,icon:'💻',title:'Python: с нуля до проекта',desc:'Месяц кода. Финал — работающий проект.',tag:'Код'},
+  {id:68,dir:'mind',days:30,icon:'🌐',title:'Сайт/приложение за месяц',desc:'Полный цикл: идея → дизайн → код → релиз.',tag:'Код'},
+  {id:69,dir:'mind',days:30,icon:'🧘',title:'Медитация 30 дней',desc:'Месяц осознанности. Мозг работает иначе.',tag:'Осознанность'},
+  {id:70,dir:'mind',days:30,icon:'📝',title:'Дневник 30 дней',desc:'Месяц рефлексии. Ты узнаешь себя.',tag:'Привычка'},
+  {id:71,dir:'mind',days:30,icon:'🎤',title:'Ораторское мастерство',desc:'Месяц практики речи. Финал — выступление.',tag:'Навык'},
+  {id:72,dir:'mind',days:30,icon:'🏛',title:'Стоицизм: практика',desc:'Месяц философии. Спокойствие и воля.',tag:'Философия'},
+  // ХАРАКТЕР 7
+  {id:73,dir:'will',days:7,icon:'⏰',title:'Подъём 6:00 × 7',desc:'Без snooze. Неделя ранних подъёмов.',tag:'Дисциплина'},
+  {id:74,dir:'will',days:7,icon:'📵',title:'Без соцсетей неделю',desc:'Удалил приложения. Вернул 2 часа в день.',tag:'Детокс'},
+  {id:75,dir:'will',days:7,icon:'🚿',title:'Холодный душ × 7',desc:'2 минуты холодной воды. Закалка воли.',tag:'Закалка'},
+  {id:76,dir:'will',days:7,icon:'🚫',title:'Без порно неделю',desc:'7 дней чистоты. Энергия, фокус, уважение к себе.',tag:'Перезагрузка'},
+  {id:77,dir:'will',days:7,icon:'🍷',title:'Без алкоголя неделю',desc:'7 дней трезвости. Сон, кожа, ясность.',tag:'Детокс'},
+  {id:78,dir:'will',days:7,icon:'📋',title:'Планирование дня × 7',desc:'Утром список. Вечером итог. Дисциплина ума.',tag:'Привычка'},
+  // ХАРАКТЕР 14
+  {id:79,dir:'will',days:14,icon:'⏰',title:'Подъём 6:00 × 14',desc:'Две недели ранних подъёмов. Привычка формируется.',tag:'Дисциплина'},
+  {id:80,dir:'will',days:14,icon:'📵',title:'Без соцсетей 14 дней',desc:'Полный детокс. Книги, спорт, живые люди.',tag:'Детокс'},
+  {id:81,dir:'will',days:14,icon:'🚿',title:'Холодный душ × 14',desc:'Закалка закрепляется. Иммунитет, воля.',tag:'Закалка'},
+  {id:82,dir:'will',days:14,icon:'🚫',title:'Без порно 14 дней',desc:'Перезагрузка дофамина. Реальная мотивация.',tag:'Перезагрузка'},
+  {id:83,dir:'will',days:14,icon:'💰',title:'Дисциплина денег × 14',desc:'Без импульсивных трат. Учёт каждой копейки.',tag:'Финансы'},
+  {id:84,dir:'will',days:14,icon:'🧘',title:'Медитация × 14 без пропусков',desc:'Две недели практики. Контроль эмоций.',tag:'Осознанность'},
+  // ХАРАКТЕР 21
+  {id:85,dir:'will',days:21,icon:'⏰',title:'Подъём 6:00 × 21',desc:'21 день = привычка. Ты уже другой человек.',tag:'Дисциплина'},
+  {id:86,dir:'will',days:21,icon:'📵',title:'Без соцсетей 21 день',desc:'Три недели свободы от ленты.',tag:'Детокс'},
+  {id:87,dir:'will',days:21,icon:'🚿',title:'Холодный душ × 21',desc:'Закалка как образ жизни.',tag:'Закалка'},
+  {id:88,dir:'will',days:21,icon:'🚫',title:'Без порно 21 день',desc:'Полная перезагрузка. Ты снова чувствуешь.',tag:'Перезагрузка'},
+  {id:89,dir:'will',days:21,icon:'🍷',title:'Без алкоголя 21 день',desc:'Три недели трезвости. Ты не узнаешь себя.',tag:'Детокс'},
+  {id:90,dir:'will',days:21,icon:'💪',title:'Спорт + режим + питание',desc:'Три системы вместе. Полная перестройка.',tag:'Комбо'},
+  // ХАРАКТЕР 30
+  {id:91,dir:'will',days:30,icon:'⏰',title:'Подъём 6:00 × 30',desc:'Месяц. Новая жизнь начинается утром.',tag:'Дисциплина'},
+  {id:92,dir:'will',days:30,icon:'📵',title:'Без соцсетей месяц',desc:'Месяц без ленты. Что ты успел?',tag:'Детокс'},
+  {id:93,dir:'will',days:30,icon:'🚿',title:'Холодный душ × 30',desc:'Месяц закалки. Тело и воля как сталь.',tag:'Закалка'},
+  {id:94,dir:'will',days:30,icon:'🚫',title:'Без порно 30 дней',desc:'Месяц перезагрузки. Вернул энергию.',tag:'Перезагрузка'},
+  {id:95,dir:'will',days:30,icon:'🍷',title:'Без алкоголя месяц',desc:'Месяц трезвости. Сон, форма, деньги.',tag:'Детокс'},
+  {id:96,dir:'will',days:30,icon:'👑',title:'Полная перезагрузка 30 дней',desc:'Спорт + питание + режим + деньги. Новый ты.',tag:'Комбо'},
+  // ДЕЛО 7
+  {id:97,dir:'money',days:7,icon:'💵',title:'Накопить на подарок',desc:'Откладывать сумму 7 дней. Финал — подарок ей.',tag:'Накопления'},
+  {id:98,dir:'money',days:7,icon:'📄',title:'Резюме за неделю',desc:'Обновить/создать резюме. По блокам.',tag:'Карьера'},
+  {id:99,dir:'money',days:7,icon:'💼',title:'Отклики на вакансии × 7',desc:'3 отклика в день. 21 за неделю.',tag:'Поиск'},
+  {id:100,dir:'money',days:7,icon:'📊',title:'Учёт финансов × 7',desc:'Записывать каждую трату. Осознанность.',tag:'Финансы'},
+  // ДЕЛО 14
+  {id:101,dir:'money',days:14,icon:'💵',title:'Накопить крупную сумму',desc:'2 недели откладываний. Цель — поездка/подарок.',tag:'Накопления'},
+  {id:102,dir:'money',days:14,icon:'💼',title:'Найти подработку',desc:'Шаг в день: платформы, заказы, отклики.',tag:'Доход'},
+  {id:103,dir:'money',days:14,icon:'🎯',title:'Резюме + портфолио',desc:'Собрать всё в одном месте. Готов к работе.',tag:'Карьера'},
+  {id:104,dir:'money',days:14,icon:'🛠',title:'Фриланс-навык',desc:'Выбрать услугу, упаковать, первый заказ.',tag:'Доход'},
+  // ДЕЛО 21
+  {id:105,dir:'money',days:21,icon:'💵',title:'Финансовая подушка',desc:'3 недели откладываний. Старт резерва.',tag:'Накопления'},
+  {id:106,dir:'money',days:21,icon:'🚀',title:'MVP своего проекта',desc:'Идея → прототип за 21 день. Первые юзеры.',tag:'Бизнес'},
+  {id:107,dir:'money',days:21,icon:'📈',title:'Инвестиции: старт',desc:'Открыть счёт, купить первый актив.',tag:'Инвестиции'},
+  {id:108,dir:'money',days:21,icon:'🤝',title:'Нетворкинг × 21',desc:'1 новый контакт в день. Сеть растёт.',tag:'Связи'},
+  // ДЕЛО 30
+  {id:109,dir:'money',days:30,icon:'💵',title:'Накопить серьёзную сумму',desc:'Месяц откладываний. Реальный капитал.',tag:'Накопления'},
+  {id:110,dir:'money',days:30,icon:'💼',title:'Новая работа за месяц',desc:'Поиск, отклики, собеседования, оффер.',tag:'Карьера'},
+  {id:111,dir:'money',days:30,icon:'🚀',title:'Свой проект за месяц',desc:'От идеи до первых денег. Полный цикл.',tag:'Бизнес'},
+  {id:112,dir:'money',days:30,icon:'📈',title:'Финансовая грамотность',desc:'Месяц изучения. Понять деньги.',tag:'Инвестиции'},
+  {id:113,dir:'money',days:30,icon:'🏦',title:'Убрать долги',desc:'Месяц выплат по плану. Свобода от долгов.',tag:'Финансы'},
+  // ОТНОШЕНИЯ 7
+  {id:114,dir:'love',days:7,icon:'💬',title:'7 глубоких вопросов ей',desc:'По одному в день. Узнать её заново.',tag:'Глубина'},
+  {id:115,dir:'love',days:7,icon:'💝',title:'Забота × 7',desc:'1 действие заботы в день. Что важно ей.',tag:'Внимание'},
+  {id:116,dir:'love',days:7,icon:'💌',title:'Тёплое сообщение × 7',desc:'Не «привет», а конкретная деталь о ней.',tag:'Слова'},
+  {id:117,dir:'love',days:7,icon:'🎙',title:'Голосовые вместо текста × 7',desc:'Живой голос теплее букв.',tag:'Слова'},
+  {id:118,dir:'love',days:7,icon:'📔',title:'Дневник отношений × 7',desc:'Записывать 1 момент о ней каждый вечер.',tag:'Дневник'},
+  {id:119,dir:'love',days:7,icon:'📸',title:'Фото-проект о вас',desc:'7 кадров. Собрать альбом к встрече.',tag:'Творчество'},
+  // ОТНОШЕНИЯ 14
+  {id:120,dir:'love',days:14,icon:'💬',title:'14 глубоких вопросов',desc:'2 недели разговоров. Настоящая близость.',tag:'Глубина'},
+  {id:121,dir:'love',days:14,icon:'💝',title:'Забота × 14',desc:'Две недели действий для неё. Она заметит.',tag:'Внимание'},
+  {id:122,dir:'love',days:14,icon:'✍️',title:'Письмо к встрече',desc:'14 дней по абзацу. Финал — целое письмо.',tag:'Слова'},
+  {id:123,dir:'love',days:14,icon:'🤝',title:'Совместный челлендж',desc:'Выбрать программу и идти вдвоём.',tag:'Вместе'},
+  {id:124,dir:'love',days:14,icon:'🍳',title:'Готовить для неё × 14',desc:'Новое блюдо каждый день. К встрече — мастер.',tag:'Забота'},
+  // ОТНОШЕНИЯ 21
+  {id:125,dir:'love',days:21,icon:'💬',title:'21 вопрос ей',desc:'Три недели узнавания. Ты знаешь её глубже.',tag:'Глубина'},
+  {id:126,dir:'love',days:21,icon:'💝',title:'Забота × 21',desc:'Привычка заботы. Она чувствует разницу.',tag:'Внимание'},
+  {id:127,dir:'love',days:21,icon:'📔',title:'Дневник отношений × 21',desc:'21 день наблюдений. Книга о вас.',tag:'Дневник'},
+  {id:128,dir:'love',days:21,icon:'📚',title:'Совместное чтение',desc:'Одна книга на двоих. Обсуждение по главам.',tag:'Вместе'},
+  {id:129,dir:'love',days:21,icon:'💪',title:'Совместный спорт онлайн',desc:'Тренировки по видео вместе. Мотивация ×2.',tag:'Вместе'},
+  // ОТНОШЕНИЯ 30
+  {id:130,dir:'love',days:30,icon:'💬',title:'30 вопросов ей',desc:'Месяц глубоких разговоров. Полное узнавание.',tag:'Глубина'},
+  {id:131,dir:'love',days:30,icon:'💝',title:'Забота × 30',desc:'Месяц заботы. Ты стал опорой.',tag:'Внимание'},
+  {id:132,dir:'love',days:30,icon:'✍️',title:'Письмо к встрече — 30 дней',desc:'Месяц написания. Финал — большое письмо.',tag:'Слова'},
+  {id:133,dir:'love',days:30,icon:'📸',title:'Фото-проект 30 кадров',desc:'Каждый день фото о вас. Альбом к встрече.',tag:'Творчество'},
+  {id:134,dir:'love',days:30,icon:'👑',title:'Стать лучшим мужчиной',desc:'Спорт + характер + забота. Трансформация.',tag:'Комбо'},
+  // ВСТРЕЧА 7
+  {id:135,dir:'meet',days:7,icon:'🎯',title:'Идеальная встреча за неделю',desc:'Каждый день — шаг подготовки. Финал — незабываемо.',tag:'Подготовка'},
+  {id:136,dir:'meet',days:7,icon:'🗺',title:'Квест по городу за неделю',desc:'7 точек, 7 загадок. Сюрприз к встрече.',tag:'Сюрприз'},
+  {id:137,dir:'meet',days:7,icon:'🍷',title:'Романтический ужин',desc:'Место, меню, атмосфера. Всё продумано.',tag:'Ужин'},
+  {id:138,dir:'meet',days:7,icon:'🎁',title:'Подарок своими руками',desc:'7 дней — 1 шаг к подарку. Финал — вручение.',tag:'Подарок'},
+  {id:139,dir:'meet',days:7,icon:'📸',title:'Фотосессия',desc:'Найти локацию, договориться, подготовить.',tag:'Фото'},
+  // ВСТРЕЧА 14
+  {id:140,dir:'meet',days:14,icon:'🎯',title:'Идеальная встреча за 2 недели',desc:'14 шагов. Каждый час дня продуман.',tag:'Подготовка'},
+  {id:141,dir:'meet',days:14,icon:'🏨',title:'Поездка на выходные',desc:'Забронировать, спланировать, удивить.',tag:'Путешествие'},
+  {id:142,dir:'meet',days:14,icon:'🧺',title:'Пикник',desc:'Место, корзина, плед, сюрпризы.',tag:'Свидание'},
+  {id:143,dir:'meet',days:14,icon:'💆',title:'SPA/массаж для неё',desc:'Организовать день заботы. Она растает.',tag:'Забота'},
+  {id:144,dir:'meet',days:14,icon:'✉️',title:'Письмо в будущее',desc:'Написать письмо, открыть через год вместе.',tag:'Символика'},
+  // ВСТРЕЧА 21
+  {id:145,dir:'meet',days:21,icon:'🎯',title:'Идеальная встреча за 3 недели',desc:'21 день подготовки. Финал — событие года.',tag:'Подготовка'},
+  {id:146,dir:'meet',days:21,icon:'🎨',title:'Совместный творческий вечер',desc:'Организовать рисование/керамику вдвоём.',tag:'Свидание'},
+  {id:147,dir:'meet',days:21,icon:'🎂',title:'Сюрприз-праздник',desc:'Устроить праздник без повода. Она запомнит.',tag:'Сюрприз'},
+  {id:148,dir:'meet',days:21,icon:'📖',title:'Капсула времени',desc:'Собрать коробку воспоминаний. Открыть вместе.',tag:'Символика'},
+  // ВСТРЕЧА 30
+  {id:149,dir:'meet',days:30,icon:'🎯',title:'Идеальная встреча за месяц',desc:'Месяц подготовки. Встреча, которую она запомнит.',tag:'Подготовка'},
+  {id:150,dir:'meet',days:30,icon:'✈️',title:'Путешествие вместе',desc:'Спланировать поездку. Билеты, отель, маршрут.',tag:'Путешествие'},
+  {id:151,dir:'meet',days:30,icon:'🏡',title:'Обустроить пространство',desc:'Подготовить дом к её приезду. Уют, детали.',tag:'Дом'},
+  {id:152,dir:'meet',days:30,icon:'💍',title:'Особенный момент',desc:'Подготовить что-то важное. Момент жизни.',tag:'Символика'},
+  // РАСШИРЕНИЕ: СПОРТ
+  {id:153,dir:'sport',days:7,icon:'🧘',title:'Йога для начинающих',desc:'Простые асаны. Дыхание, гибкость, спокойствие.',tag:'Йога'},
+  {id:154,dir:'sport',days:14,icon:'🧘',title:'Йога 14 дней',desc:'Ежедневная практика. Тело становится мягче.',tag:'Йога'},
+  {id:155,dir:'sport',days:30,icon:'🤸',title:'Шпагат за 30 дней',desc:'Растяжка по программе. Финал — садишься на шпагат.',tag:'Гибкость'},
+  {id:156,dir:'sport',days:21,icon:'🦵',title:'Растяжка всего тела',desc:'21 день работы над гибкостью и осанкой.',tag:'Гибкость'},
+  {id:157,dir:'sport',days:14,icon:'🩺',title:'Осанка за 2 недели',desc:'Упражнения на спину и шею. Ровная спина.',tag:'Осанка'},
+  {id:158,dir:'sport',days:30,icon:'🥊',title:'Бокс: техника ударов',desc:'Тень, мешок, комбинации. Месяц практики.',tag:'Бокс'},
+  {id:159,dir:'sport',days:21,icon:'🥋',title:'Базовое БИ',desc:'Стойки, удары, защита. Основы единоборства.',tag:'Единоборства'},
+  {id:160,dir:'sport',days:14,icon:'🤜',title:'Сила удара',desc:'Работа над скоростью и мощью. Мешок.',tag:'Бокс'},
+  {id:161,dir:'sport',days:30,icon:'🏊',title:'Плавание: 1 км',desc:'С 50 м до 1 км за месяц. Техника + дыхание.',tag:'Плавание'},
+  {id:162,dir:'sport',days:21,icon:'🚴',title:'Велосипед: 30 км',desc:'Рост дистанции. Ноги, выносливость, улица.',tag:'Вело'},
+  {id:163,dir:'sport',days:14,icon:'🏊',title:'Плавание: техника',desc:'Кроль, дыхание, скольжение. 2 недели.',tag:'Плавание'},
+  {id:164,dir:'sport',days:7,icon:'💥',title:'Бёрпи 100 за 7 дней',desc:'Адская штука. 15→100 с прогрессией.',tag:'Воркаут'},
+  {id:165,dir:'sport',days:14,icon:'🪢',title:'Скакалка 1000',desc:'С 50 до 1000 прыжков за 2 недели.',tag:'Кардио'},
+  {id:166,dir:'sport',days:21,icon:'🦾',title:'Сила хвата',desc:'Вис, эспандер, фермерская ходьба. 21 день.',tag:'Сила'},
+  {id:167,dir:'sport',days:30,icon:'🧗',title:'Воркаут на турниках',desc:'Месяц уличной тренировки. Турник, брусья.',tag:'Воркаут'},
+  {id:168,dir:'sport',days:14,icon:'⚡',title:'Спринты: скорость',desc:'Бег 30/60/100 м. Рост скорости.',tag:'Кардио'},
+  // РАСШИРЕНИЕ: ПИТАНИЕ
+  {id:169,dir:'food',days:14,icon:'🥩',title:'Высокобелковая',desc:'1.5-2 г белка/кг. Рост мышц, сытость.',tag:'Диета'},
+  {id:170,dir:'food',days:21,icon:'🥗',title:'Средиземноморская',desc:'Рыба, овощи, оливковое масло. Здоровье.',tag:'Диета'},
+  {id:171,dir:'food',days:30,icon:'🌱',title:'Вегетарианство: старт',desc:'Месяц без мяса. Ощутить разницу.',tag:'Диета'},
+  {id:172,dir:'food',days:14,icon:'🍵',title:'Детокс-чай',desc:'Травяные чаи вместо кофе. Мягкий переход.',tag:'Детокс'},
+  {id:173,dir:'food',days:21,icon:'🥜',title:'Здоровые перекусы',desc:'Орехи, фрукты вместо снеков. 3 недели.',tag:'Привычка'},
+  {id:174,dir:'food',days:30,icon:'🍽',title:'План питания + готовка',desc:'Меню на месяц + заготовки. Полный контроль.',tag:'Система'},
+  {id:175,dir:'food',days:14,icon:'⚖',title:'Сушка тела',desc:'Дефицит + белок + спорт. Рельеф за 2 недели.',tag:'Похудение'},
+  {id:176,dir:'food',days:21,icon:'🥛',title:'Отказ от лактозы',desc:'21 день без молочки. Пищеварение, кожа.',tag:'Детокс'},
+  // РАСШИРЕНИЕ: РАЗВИТИЕ
+  {id:177,dir:'mind',days:30,icon:'🇬🇧',title:'Английский: 300 слов',desc:'База для общения. 10 слов в день.',tag:'Язык'},
+  {id:178,dir:'mind',days:30,icon:'🇪🇸',title:'Испанский: 300 слов',desc:'Месяц языка. Сказать ей фразу при встрече.',tag:'Язык'},
+  {id:179,dir:'mind',days:30,icon:'🇩🇪',title:'Немецкий: 300 слов',desc:'Структура + слова. Базовый уровень.',tag:'Язык'},
+  {id:180,dir:'mind',days:30,icon:'🇫🇷',title:'Французский: 300 слов',desc:'Красивый язык за месяц. Произношение.',tag:'Язык'},
+  {id:181,dir:'mind',days:21,icon:'🇹🇷',title:'Турецкий: 200 слов',desc:'21 день практики. База для поездки.',tag:'Язык'},
+  {id:182,dir:'mind',days:21,icon:'🇨🇳',title:'Китайский: тоны + 100 слов',desc:'Основа китайского. Тоны, пиньинь.',tag:'Язык'},
+  {id:183,dir:'mind',days:14,icon:'📚',title:'Английский: фразы',desc:'100 фраз для общения за 2 недели.',tag:'Язык'},
+  {id:184,dir:'mind',days:30,icon:'🎹',title:'Пианино: 1 песня',desc:'Месяц практики. Сыграть ей любимую мелодию.',tag:'Музыка'},
+  {id:185,dir:'mind',days:21,icon:'🥁',title:'Ритм и бит',desc:'Основы ритма. Упражнения без инструмента.',tag:'Музыка'},
+  {id:186,dir:'mind',days:14,icon:'🎬',title:'Видеомонтаж',desc:'Собрать ролик о вас к встрече.',tag:'Творчество'},
+  {id:187,dir:'mind',days:21,icon:'📷',title:'Фото: портрет',desc:'Учиться снимать людей. Свет, ракурс.',tag:'Творчество'},
+  {id:188,dir:'mind',days:30,icon:'🎨',title:'Digital art',desc:'Рисование на планшете. Procreate/Photoshop.',tag:'Творчество'},
+  {id:189,dir:'mind',days:21,icon:'🖋',title:'Каллиграфия',desc:'Красивый почерк. Терпение и точность.',tag:'Творчество'},
+  {id:190,dir:'mind',days:14,icon:'🗣',title:'Публичная речь',desc:'2 недели практики. Выступление без страха.',tag:'Навык'},
+  {id:191,dir:'mind',days:30,icon:'📝',title:'Копирайтинг',desc:'Месяц письма. Навык продающих текстов.',tag:'Навык'},
+  {id:192,dir:'mind',days:21,icon:'💻',title:'Frontend: React',desc:'Компоненты, состояние, проект. 3 недели.',tag:'Код'},
+  {id:193,dir:'mind',days:30,icon:'⚙️',title:'Backend: Node.js',desc:'Сервер, API, база. Месяц практики.',tag:'Код'},
+  {id:194,dir:'mind',days:21,icon:'📱',title:'Мобильное приложение',desc:'Простой app на React Native. 3 недели.',tag:'Код'},
+  {id:195,dir:'mind',days:14,icon:'🤖',title:'AI-инструменты',desc:'ChatGPT, Midjourney. Прокачать продуктивность.',tag:'Навык'},
+  {id:196,dir:'mind',days:30,icon:'🧠',title:'Мнемотехники',desc:'Месяц развития памяти. Запоминать быстро.',tag:'Мозг'},
+  {id:197,dir:'mind',days:21,icon:'⚡',title:'Скорочтение',desc:'3 недели упражнений. Читать в 2 раза быстрее.',tag:'Мозг'},
+  {id:198,dir:'mind',days:30,icon:'📊',title:'Excel/Google Sheets',desc:'Формулы, сводные, графики. Месяц.',tag:'Навык'},
+  {id:199,dir:'mind',days:21,icon:'🎯',title:'Теория игр',desc:'Стратегия, логика, решения. 3 недели.',tag:'Мозг'},
+  {id:200,dir:'mind',days:14,icon:'📖',title:'Нон-фикшн книга',desc:'Книга по саморазвитию за 2 недели.',tag:'Чтение'},
+  // РАСШИРЕНИЕ: ХАРАКТЕР
+  {id:201,dir:'will',days:7,icon:'🕐',title:'Ранний отбой × 7',desc:'В кровать до 23:00. Сон как лекарство.',tag:'Режим'},
+  {id:202,dir:'will',days:14,icon:'🌅',title:'Подъём 5:30 × 14',desc:'Две недели до рассвета. Ты другой человек.',tag:'Дисциплина'},
+  {id:203,dir:'will',days:21,icon:'🤐',title:'21 день без мата',desc:'Контроль речи. Уважение к себе и другим.',tag:'Дисциплина'},
+  {id:204,dir:'will',days:30,icon:'🕊',title:'Месяц спокойствия',desc:'Не срываться, не кричать. Контроль эмоций.',tag:'Эмоции'},
+  {id:205,dir:'will',days:14,icon:'🍔',title:'Без переедания × 14',desc:'Есть до 80% сытости. Осознанное питание.',tag:'Привычка'},
+  {id:206,dir:'will',days:21,icon:'🚭',title:'Без курения/вейпа',desc:'21 день чистоты. Лёгкие, кожа, деньги.',tag:'Отказ'},
+  {id:207,dir:'will',days:7,icon:'🌙',title:'7 дней без порно (мягко)',desc:'Стартовая неделя перезагрузки.',tag:'Перезагрузка'},
+  {id:208,dir:'will',days:14,icon:'📱',title:'2 часа экрана максимум',desc:'Контроль соцсетей и YouTube. 2 недели.',tag:'Детокс'},
+  {id:209,dir:'will',days:21,icon:'📚',title:'Читать вместо ленты',desc:'Каждый скролл заменять страницей книги.',tag:'Привычка'},
+  {id:210,dir:'will',days:30,icon:'🧊',title:'Закалка + контраст',desc:'Холод/тепло. 30 дней. Иммунитет и воля.',tag:'Закалка'},
+  // РАСШИРЕНИЕ: ДЕЛО
+  {id:211,dir:'money',days:14,icon:'📈',title:'Привычка откладывать',desc:'10% от дохода в резерв. 2 недели.',tag:'Финансы'},
+  {id:212,dir:'money',days:21,icon:'📉',title:'Отказ от импульсивных трат',desc:'Правило 24 часов. 3 недели.',tag:'Финансы'},
+  {id:213,dir:'money',days:30,icon:'📚',title:'Финансовое образование',desc:'Месяц книг и курсов. Понять деньги.',tag:'Образование'},
+  {id:214,dir:'money',days:14,icon:'💼',title:'LinkedIn + резюме',desc:'2 недели упаковки. Готов к офферам.',tag:'Карьера'},
+  {id:215,dir:'money',days:21,icon:'🎤',title:'Нетворкинг 21 день',desc:'1 контакт в день. Сеть растёт.',tag:'Сdescвязи'},
+  {id:216,dir:'money',:'days:30,icon:'💰И',title:'Первый фриланс-заказ',desc:'Месяц поиска. Первые деньги руками.',tag:'Доход'},
+  {id:217,dir:'money',days:30,icon:'🚀',title:'Идея → прототип',desc:'Месяц работы над своим проектом.',tag:'Бизнес'},
+  // РАСШИРЕНИЕ: ОТНОШЕНИЯ
+  {id:218,dir:'love',days:7,icon:'💞',title:'Пять языков любви',зучить её язык. 7 дней практики.',tag:'Понимание'},
+  {id:219,dir:'love',days:14,icon:'🎁',title:'Подарок своими руками',desc:'2 недели создания. Финал — вручение.',tag:'Забота'},
+  {id:220,dir:'love',days:21,icon:'📖',title:'Совместный дневник',desc:'Одна тетрадь на двоих. Обмен записями.',tag:'Вместе'},
+  {id:221,dir:'love',days:7,icon:'🎵',title:'Плейлист о вас',desc:'7 дней — 7 песен. Каждая о моменте.',tag:'Творчество'},
+  {id:222,dir:'love',days:14,icon:'🎬',title:'Совместный киноклуб',desc:'2 недели — фильм через день + обсуждение.',tag:'Вместе'},
+  {id:223,dir:'love',days:21,icon:'🍳',title:'Онлайн-кухня × 21',desc:'Готовите вместе по видеосвязи. Рецепты.',tag:'Вместе'},
+  {id:224,dir:'love',days:30,icon:'✉️',title:'Письмо каждую неделю',desc:'Месяц — 4 письма. Открыть при встрече.',tag:'Слова'},
+  {id:225,dir:'love',days:14,icon:'📸',title:'Фото-челлендж вместе',desc:'Тема дня + 2 кадра. Собрать альбом.',tag:'Творчество'},
+  {id:226,dir:'love',days:7,icon:'🕊',title:'7 дней без обид',desc:'Не вспоминать старое. Только настоящее.',tag:'Эмоции'},
+  {id:227,dir:'love',days:21,icon:'🎯',title:'Общая цель за 21 день',desc:'Накопить, выучить, сделать — вдвоём.',tag:'Вместе'},
+  // РАСШИРЕНИЕ: ВСТРЕЧА
+  {id:228,dir:'meet',days:7,icon:'🍕',title:'Готовим вместе: ужин',desc:'Рецепт, ингредиенты, атмосфера. Финал — ужин.',tag:'Свидание'},
+  {id:229,dir:'meet',days:14,icon:'🎬',title:'Киновечер + сюрпризы',desc:'Марафон любимых фильмов. Атмосфера.',tag:'Свидание'},
+  {id:230,dir:'meet',days:21,icon:'🏞',title:'Пикник на природе',desc:'Место, корзина, плед, музыка. Подготовка.',tag:'Свидание'},
+  {id:231,dir:'meet',days:14,icon:'🎨',title:'Мастер-класс вдвоём',desc:'Керамика, рисование, кулинария. Запись.',tag:'Свидание'},
+  {id:232,dir:'meet',days:30,icon:'🎢',title:'Парк развлечений',desc:'Месяц планирования. Аттракционы, эмоции.',tag:'Приключение'},
+  {id:233,dir:'meet',days:21,icon:'🌅',title:'Рассвет вместе',desc:'Найти место, встать рано, встретить рассвет.',tag:'Романтика'},
+  {id:234,dir:'meet',days:14,icon:'🛁',title:'День заботы для неё',desc:'SPA, массаж, ванна. Полный релакс.',tag:'Забота'},
+  {id:235,dir:'meet',days:7,icon:'💍',title:'Важный разговор',desc:'Подготовить слова. Сказать то, что важно.',tag:'Символика'},
+  {id:236,dir:'meet',days:30,icon:'📸',title:'Профессиональная фотосессия',desc:'Найти фотографа, локацию, образ.',tag:'Фото'},
+  {id:237,dir:'meet',days:21,icon:'🏡',title:'Подготовить дом',desc:'Уют, свечи, музыка, её любимые вещи.',tag:'Дом'},
+  {id:238,dir:'meet',days:14,icon:'🎁',title:'Квест-подарок',desc:'Маршрут с загадками. Финал — подарок.',tag:'Сюрприз'},
+  {id:239,dir:'meet',days:7,icon:'✉️',title:'Письмо в день встречи',desc:'Написать за неделю. Вручить лично.',tag:'Слова'},
+  {id:240,dir:'meet',days:30,icon:'✈️',title:'Сюрприз-поездка',desc:'Месяц подготовки. Билеты, отель, маршрут.',tag:'Путешествие'},
+];
+  // ============ ТАЙМЕР ============
+let MEETING_DATE = (() => {
+  const d = new Date();
+  d.setDate(d.getDate() + 6);
+  d.setHours(18, 0, 0, 0);
+  return d;
+})();
+
+function updateTimer(){
+  const now = new Date();
+  const diff = MEETING_DATE - now;
+
+  if(diff <= 0){
+    document.getElementById('days').textContent = '00';
+    document.getElementById('hours').textContent = '00';
+    document.getElementById('minutes').textContent = '00';
+    document.getElementById('seconds').textContent = '00';
+    document.getElementById('progressBar').style.width = '100%';
+    document.getElementById('timerMeta').textContent = 'Встреча сегодня! ❤';
+    return;
+  }
+
+  const days = Math.floor(diff / 86400000);
+  const hours = Math.floor((diff % 86400000) / 3600000);
+  const minutes = Math.floor((diff % 3600000) / 60000);
+  const seconds = Math.floor((diff % 60000) / 1000);
+
+  const pad = n => String(n).padStart(2, '0');
+  document.getElementById('days').textContent = pad(days);
+  document.getElementById('hours').textContent = pad(hours);
+  document.getElementById('minutes').textContent = pad(minutes);
+  document.getElementById('seconds').textContent = pad(seconds);
+
+  const TOTAL = 30 * 86400000;
+  const passed = TOTAL - diff;
+  const pct = Math.min(100, Math.max(0, (passed / TOTAL) * 100));
+  document.getElementById('progressBar').style.width = pct.toFixed(1) + '%';
+
+  let hint = '';
+  if(days >= 30) hint = 'Успеешь пройти программы на 30 дней';
+  else if(days >= 21) hint = 'Успеешь пройти программы на 21 день';
+  else if(days >= 14) hint = 'Успеешь пройти программы на 14 дней';
+  else if(days >= 7) hint = 'Успеешь пройти программы на 7 дней';
+  else hint = 'Осталось меньше недели — выбери экспресс-программы';
+
+  const fmt = MEETING_DATE.toLocaleDateString('ru-RU', {day:'numeric', month:'long'});
+  const time = MEETING_DATE.toLocaleTimeString('ru-RU', {hour:'2-digit', minute:'2-digit'});
+  document.getElementById('timerMeta').textContent = `Встреча: ${fmt}, ${time} · ${hint}`;
+}
+updateTimer();
+setInterval(updateTimer, 1000);
+
+// ============ ВЫБОР ДАТЫ ============
+function toLocalInput(date){
+  const off = date.getTimezoneOffset();
+  const local = new Date(date.getTime() - off*60000);
+  return local.toISOString().slice(0,16);
+}
+const dateAInput = document.getElementById('dateA');
+const dateBInput = document.getElementById('dateB');
+dateAInput.value = toLocalInput(new Date());
+dateBInput.value = toLocalInput(MEETING_DATE);
+
+dateBInput.addEventListener('change', () => {
+  const b = new Date(dateBInput.value);
+  if(b > new Date()){ MEETING_DATE = b; updateTimer(); }
+});
+
+// ============ АВАТАРКИ ============
+document.getElementById('uploadMe').addEventListener('change', e => {
+  const file = e.target.files[0];
+  if(file) document.getElementById('avatarMe').src = URL.createObjectURL(file);
+});
+document.getElementById('uploadHer').addEventListener('change', e => {
+  const file = e.target.files[0];
+  if(file) document.getElementById('avatarHer').src = URL.createObjectURL(file);
+});
+
+// ============ СОХРАНЕНИЕ ============
+const STORAGE_KEY = 'mezhdu-nami-v1';
+let state = { names:{me:'Миша', her:'Аня'}, paths:[], streak:0, lastVisit:null };
+
+function loadState(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(raw) state = {...state, ...JSON.parse(raw)};
+  }catch(e){}
+}
+function saveState(){
+  try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }catch(e){}
+}
+loadState();
+
+if(state.names.me) document.getElementById('nameMe').value = state.names.me;
+if(state.names.her) document.getElementById('nameHer').value = state.names.her;
+document.getElementById('nameMe').addEventListener('input', e => { state.names.me = e.target.value; saveState(); });
+document.getElementById('nameHer').addEventListener('input', e => { state.names.her = e.target.value; saveState(); });
+
+(function updateStreak(){
+  const today = new Date().toDateString();
+  if(state.lastVisit !== today){
+    const y = new Date(Date.now() - 86400000).toDateString();
+    state.streak = (state.lastVisit === y) ? (state.streak + 1) : 1;
+    state.lastVisit = today;
+    saveState();
+  }
+  const word = state.streak === 1 ? 'день' : (state.streak < 5 ? 'дня' : 'дней');
+  document.getElementById('streakBadge').textContent = `🔥 Streak: ${state.streak} ${word}`;
+})();
+
+// ============ ФИЛЬТРЫ ============
+let currentDir = 'all';
+let currentDur = 'all';
+let visibleCount = 24;
+
+document.querySelectorAll('.dir').forEach(el => {
+  el.addEventListener('click', () => {
+    document.querySelectorAll('.dir').forEach(d => d.classList.remove('active'));
+    el.classList.add('active');
+    currentDir = el.dataset.dir;
+    visibleCount = 24;
+    renderPrograms();
+  });
+});
+document.querySelectorAll('.dur-btn').forEach(el => {
+  el.addEventListener('click', () => {
+    document.querySelectorAll('.dur-btn').forEach(d => d.classList.remove('active'));
+    el.classList.add('active');
+    currentDur = el.dataset.dur;
+    visibleCount = 24;
+    renderPrograms();
+  });
+});
+
+// ============ РЕНДЕР ============
+function getFiltered(){
+  return PROGRAMS.filter(p => {
+    const dirOk = currentDir === 'all' || p.dir === currentDir;
+    const durOk = currentDur === 'all' || String(p.days) === String(currentDur);
+    return dirOk && durOk;
+  });
+}
+const dirLabel = {
+  sport:'Спорт', food:'Питание', mind:'Развитие', will:'Характер',
+  money:'Дело', love:'Отношения', meet:'Встреча'
+};
+
+function renderPrograms(){
+  const grid = document.getElementById('programsGrid');
+  const filtered = getFiltered();
+  const shown = filtered.slice(0, visibleCount);
+  document.getElementById('countNum').textContent = filtered.length;
+
+  if(filtered.length === 0){
+    grid.innerHTML = `<div class="empty"><div class="empty-icon">🔍</div><p>Ничего не найдено.<br>Попробуй другой фильтр.</p></div>`;
+    document.getElementById('loadMore').style.display = 'none';
+    return;
+  }
+
+  grid.innerHTML = shown.map((p, i) => `
+    <div class="prog-card" data-id="${p.id}" style="animation-delay:${i*0.03}s">
+      <div class="prog-top">
+        <div class="prog-icon">${p.icon}</div>
+        <div class="prog-badge">${p.days} дней</div>
+      </div>
+      <div class="prog-title">${p.title}</div>
+      <div class="prog-desc">${p.desc}</div>
+      <div class="prog-tags">
+        <span class="tag ${p.dir}">${dirLabel[p.dir]}</span>
+        <span class="tag">${p.tag}</span>
+      </div>
+      <div class="prog-foot">
+        <div class="prog-days"><strong>${p.days}</strong> дней</div>
+        <button class="prog-btn">Открыть</button>
+      </div>
+    </div>
+  `).join('');
+
+  grid.querySelectorAll('.prog-card').forEach(card => {
+    card.addEventListener('click', () => openModal(+card.dataset.id));
+  });
+
+  const lm = document.getElementById('loadMore');
+  lm.style.display = filtered.length > visibleCount ? 'block' : 'none';
+}
+document.getElementById('loadMore').addEventListener('click', () => {
+  visibleCount += 24;
+  renderPrograms();
+});
+
+// ============ ГЕНЕРАЦИЯ ДНЕЙ ============
+function generateDays(program){
+  const days = [];
+  const {dir, days: total, title} = program;
+
+  for(let i = 1; i <= total; i++){
+    let text = '';
+
+    if(dir === 'sport'){
+      if(title.includes('отжиманий')) text = `Отжимания: ${Math.round(5 + (i/total) * 95)} раз (подходы можно дробить)`;
+      else if(title.includes('приседаний')) text = `Приседания: ${Math.round(20 + (i/total) * 480)} раз`;
+      else if(title.includes('Планка')){ const s = Math.round(30 + (i/total) * 570); text = `Планка: ${Math.floor(s/60)} мин ${s%60} сек`; }
+      else if(title.includes('бег') || title.includes('км')) text = `Бег: ${(1 + (i/total) * 9).toFixed(1)} км (разминка + интервалы)`;
+      else if(title.includes('подтягиваний')) text = `Подтягивания: ${Math.round(1 + (i/total) * 19)} раз (или негативы × 3)`;
+      else text = `Тренировка ${i}/${total}: полное тело, 25 мин`;
+    }
+    else if(dir === 'food'){
+      if(title.includes('Вода')) text = `Выпить 2.5 л воды. Отметить каждый стакан`;
+      else if(title.includes('сахара')) text = `День ${i} без сахара. Ни грамма`;
+      else if(title.includes('Домашняя')) text = `Приготовить минимум 2 блюда дома`;
+      else if(title.includes('Сон')) text = `Лечь до 23:00, встать через 8 часов`;
+      else if(title.includes('фастфуда')) text = `День ${i} без фастфуда и снеков`;
+      else if(title.includes('кг')) text = `Дефицит калорий + спорт 30 мин. Взвеситься утром`;
+      else if(title.includes('Кето')) text = `Меню: белки + жиры, углеводы < 30 г`;
+      else if(title.includes('Режим питания')) text = `Завтрак 8:00, обед 13:00, ужин 18:30`;
+      else if(title.includes('Интервальное')) text = `Окно питания 12:00–20:00. Вне окна — только вода`;
+      else if(title.includes('массы')) text = `Профицит + 3 приёма белка. Тренировка вечером`;
+      else if(title.includes('л лактозы')) text = `День ${i} без молочных продуктов`;
+      else text = `День ${i}: следовать плану питания`;
+    }
+    else if(dir === 'mind'){
+      if(title.includes('слов') || title.includes('Английский') || title.includes('Испанский') || title.includes('Немецкий') || title.includes('Французский') || title.includes('Турецкий') || title.includes('Китайский')) text = `Выучить 10 новых слов + повторить вчерашние`;
+      else if(title.includes('книг') || title.includes('Нон-фикшн')) text = `Прочитать 20 страниц. Записать 3 идеи`;
+      else if(title.includes('Дневник')) text = `Вечером: 3 события дня + 1 вывод`;
+      else if(title.includes('Медитация')) text = `10 минут тишины. Дыхание 4-7-8`;
+      else if(title.includes('Python') || title.includes('Frontend') || title.includes('Backend') || title.includes('Node') || title.includes('приложение')) text = `1 час кода. Разобрать новую тему`;
+      else if(title.includes('Сайт')) text = `Собрать 1 блок сайта (HTML/CSS/JS)`;
+      else if(title.includes('Гитара') || title.includes('Пианино')) text = `30 минут практики на инструменте`;
+      else if(title.includes('Рисование') || title.includes('Каллиграфия') || title.includes('Digital')) text = `30 минут рисования. Скетч дня`;
+      else if(title.includes('Шахматы')) text = `Решить 5 задач + 1 партия`;
+      else if(title.includes('Благодарность')) text = `Записать 3 вещи, за которые благодарен`;
+      else text = `День ${i}: 30 минут развития`;
+    }
+    else if(dir === 'will'){
+      if(title.includes('6:00')) text = `Подъём в 6:00. Без snooze`;
+      else if(title.includes('5:30')) text = `Подъём в 5:30. Рассвет — твой`;
+      else if(title.includes('соцсетей')) text = `День ${i} без соцсетей. Приложения удалены`;
+      else if(title.includes('Холодный')) text = `Холодный душ 2 мин. Закалка`;
+      else if(title.includes('порно')) text = `День ${i} чистоты. Без исключений`;
+      else if(title.includes('алкоголя')) text = `День ${i} без алкоголя`;
+      else if(title.includes('Планирование')) text = `Утром — список из 5 задач. Вечером — итог`;
+      else if(title.includes('эмоций') || title.includes('спокойствия')) text = `Не повышать голос. Пауза 5 сек перед ответом`;
+      else if(title.includes('отбой')) text = `В кровать до 23:00. 8 часов сна`;
+      else if(title.includes('мата')) text = `День ${i} без мата. Контроль речи`;
+      else if(title.includes('курения')) text = `День ${i} без сигарет и вейпа`;
+      else if(title.includes('экрана')) text = `Не более 2 часов экрана за день`;
+      else if(title.includes('Закалка')) text = `Контрастный душ: 1 мин холод / 2 мин тепло × 3`;
+      else if(title.includes('переедания')) text = `Есть медленно, до 80% сытости`;
+      else if(title.includes('Читать')) text = `Каждый скролл → страница книги`;
+      else text = `День ${i}: держать дисциплину`;
+    }
+    else if(dir === 'money'){
+      if(title.includes('Накопить')) text = `Отложить сумму на встречу/подарок`;
+      else if(title.includes('Резюме') || title.includes('LinkedIn')) text = `Обновить 1 блок резюме / профиля`;
+      else if(title.includes('Отклики') || title.includes('Подработка') || title.includes('фриланс')) text = `3 отклика на вакансии / заказа`;
+      else if(title.includes('Инвестиции')) text = `Изучить тему 20 мин. 1 шаг к счёту`;
+      else if(title.includes('Долги')) text = `Записать все долги. Сделать 1 платёж`;
+      else if(title.includes('Учёт')) text = `Записать все траты за день`;
+      else if(title.includes('откладывать')) text = `10% дохода — в резерв`;
+      else if(title.includes('импульсивных')) text = `Правило 24 часов до покупки`;
+      else if(title.includes('образование')) text = `Прочитать 20 стр книги о финансах`;
+      else if(title.includes('Нетворкинг')) text = `1 новый контакт. Написать/познакомиться`;
+      else if(title.includes('MVP') || title.includes('проект') || title.includes('прототип')) text = `1 час работы над своим проектом`;
+      else if(title.includes('Финансовая грамотность')) text = `Изучить 1 тему: бюджет / инвестиции / налоги`;
+      else text = `День ${i}: 1 шаг к финансовой цели`;
+    }
+    else if(dir === 'love'){
+      if(title.includes('вопрос')) text = `Задать ей глубокий вопрос №${i} и слушать`;
+      else if(title.includes('Забота')) text = `1 действие заботы: что важно именно ей`;
+      else if(title.includes('сообщение')) text = `Тёплое сообщение с конкретной деталью`;
+      else if(title.includes('Голосовые')) text = `Записать голосовое, а не текст`;
+      else if(title.includes('Дневник отношений')) text = `Записать 1 приятный момент о ней`;
+      else if(title.includes('Письмо')) text = `Написать 1 абзац письма к встрече`;
+      else if(title.includes('Фото')) text = `Отправить ей фото дня / общий кадр`;
+      else if(title.includes('челлендж')) text = `Совместное задание: выполнить и отметить`;
+      else if(title.includes('языков')) text = `Практиковать её язык любви`;
+      else if(title.includes('Подарок')) text = `Шаг к подарку своими руками`;
+      else if(title.includes('плейлист')) text = `Добавить 1 песню в общий плейлист`;
+      else if(title.includes('киноклуб')) text = `Фильм + обсуждение с ней`;
+      else if(title.includes('кухня')) text = `Готовить вместе по видеосвязи`;
+      else if(title.includes('дневник')) text = `Записать мысль в общий дневник`;
+      else if(title.includes('обид')) text = `Не вспоминать старое. Только настоящее`;
+      else if(title.includes('цель')) text = `1 шаг к общей цели вдвоём`;
+      else if(title.includes('Готовить')) text = `Приготовить ей блюдо (или рецепт к встрече)`;
+      else if(title.includes('Совместный спорт')) text = `Тренировка по видео вместе`;
+      else if(title.includes('чтение')) text = `Прочитать главу + обсудить`;
+      else text = `День ${i}: вклад в отношения`;
+    }
+    else if(dir === 'meet'){
+      if(title.includes('Идеальная встреча')) text = `Шаг ${i}: деталь дня встречи`;
+      else if(title.includes('квест')) text = `Придумать 1 точку квеста по городу`;
+      else if(title.includes('ужин')) text = `Подготовка: место, меню, атмосфера`;
+      else if(title.includes('Фотосессия')) text = `Найти локацию / договориться`;
+      else if(title.includes('Подарок')) text = `Шаг ${i} к подарку своими руками`;
+      else if(title.includes('Поездка') || title.includes('Путешествие') || title.includes('Сюрприз-поездка')) text = `Планирование: 1 шаг к поездке`;
+      else if(title.includes('Пикник')) text = `Подготовка пикника: место, еда, плед`;
+      else if(title.includes('SPA') || title.includes('заботы')) text = `Организовать день заботы для неё`;
+      else if(title.includes('Письмо')) text = `Писать письмо к встрече`;
+      else if(title.includes('Капсула')) text = `Добавить 1 предмет в капсулу времени`;
+      else if(title.includes('творческий')) text = `Организовать творческий вечер`;
+      else if(title.includes('праздник')) text = `Подготовить сюрприз-праздник`;
+      else if(title.includes('дом')) text = `1 деталь уюта для дома к встрече`;
+      else if(title.includes('разговор')) text = `Подготовить важные слова`;
+      else if(title.includes('Киновечер')) text = `Подобрать фильм + атмосферу`;
+      else if(title.includes('Мастер-класс')) text = `Записаться на мастер-класс`;
+      else if(title.includes('Рассвет')) text = `Найти точку для встречи рассвета`;
+      else if(title.includes('Парк')) text = `Спланировать день в парке`;
+      else text = `День ${i}: подготовка к встрече`;
+    }
+    else text = `День ${i}/${total}: продолжай по плану`;
+
+    days.push({n: i, text});
+  }
+  return days;
+}
+
+// ============ МОДАЛКА ============
+let activeProgram = null;
+
+function openModal(id){
+  const p = PROGRAMS.find(x => x.id === id);
+  if(!p) return;
+  activeProgram = p;
+
+  document.getElementById('modalIcon').textContent = p.icon;
+  document.getElementById('modalTitle').textContent = p.title;
+  document.getElementById('modalDesc').textContent = p.desc;
+  document.getElementById('modalDays').textContent = p.days + ' дней';
+  document.getElementById('modalTag').textContent = p.tag;
+
+  const days = generateDays(p);
+  const path = state.paths.find(x => x.id === id);
+  const doneMap = path ? (path.days || {}) : {};
+
+  document.getElementById('dayList').innerHTML = days.map(d => `
+    <div class="day-item ${doneMap[d.n] ? 'done' : ''}" data-day="${d.n}">
+      <div class="day-check">✓</div>
+      <div class="day-num">День ${d.n}</div>
+      <div class="day-text">${d.text}</div>
+    </div>
+  `).join('');
+
+  document.querySelectorAll('.day-item').forEach(el => {
+    el.addEventListener('click', () => {
+      const n = +el.dataset.day;
+      let pathNow = state.paths.find(x => x.id === id);
+      if(!pathNow){
+        pathNow = {id, days:{}, startedAt: Date.now()};
+        state.paths.push(pathNow);
+      }
+      pathNow.days = pathNow.days || {};
+      pathNow.days[n] = !pathNow.days[n];
+      el.classList.toggle('done');
+      saveState();
+      renderPath();
+      updateStartBtn(id);
+    });
+  });
+
+  updateStartBtn(id);
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function updateStartBtn(id){
+  const btn = document.getElementById('startProgram');
+  const inPath = state.paths.find(x => x.id === id);
+  if(inPath){
+    btn.textContent = '✓ В твоём пути';
+    btn.style.background = '#5B8C7E';
+  } else {
+    btn.textContent = 'Начать программу';
+    btn.style.background = '';
+  }
+}
+
+function closeModal(){
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('modalClose').addEventListener('click', closeModal);
+document.getElementById('closeModalBtn').addEventListener('click', closeModal);
+document.getElementById('modalOverlay').addEventListener('click', e => {
+  if(e.target.id === 'modalOverlay') closeModal();
+});
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
+
+document.getElementById('startProgram').addEventListener('click', () => {
+  if(!activeProgram) return;
+  const exists = state.paths.find(p => p.id === activeProgram.id);
+  if(!exists){
+    state.paths.push({id: activeProgram.id, days:{}, startedAt: Date.now()});
+    saveState();
+    renderPath();
+  }
+  updateStartBtn(activeProgram.id);
+  setTimeout(closeModal, 600);
+});
+
+// ============ МОЙ ПУТЬ ============
+function renderPath(){
+  const list = document.getElementById('pathList');
+  if(state.paths.length === 0){
+    list.innerHTML = `<div class="path-empty">Пока ничего не выбрано. Открой программу и нажми «Начать программу».</div>`;
+    return;
+  }
+  list.innerHTML = state.paths.map(p => {
+    const prog = PROGRAMS.find(x => x.id === p.id);
+    if(!prog) return '';
+    const done = Object.values(p.days || {}).filter(Boolean).length;
+    const pct = Math.round((done / prog.days) * 100);
+    return `
+      <div class="path-item" data-id="${p.id}">
+        <div class="path-item-top">
+          <div class="path-item-title">${prog.icon} ${prog.title}</div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <div class="path-item-pct">${done}/${prog.days} · ${pct}%</div>
+            <button class="path-remove" data-remove="${p.id}" title="Убрать">✕</button>
+          </div>
+        </div>
+        <div class="path-bar"><div class="path-bar-fill" style="width:${pct}%"></div></div>
+      </div>`;
+  }).join('');
+
+  list.querySelectorAll('.path-remove').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const id = +btn.dataset.remove;
+      state.paths = state.paths.filter(p => p.id !== id);
+      saveState();
+      renderPath();
+    });
+  });
+  list.querySelectorAll('.path-item').forEach(el => {
+    el.addEventListener('click', () => openModal(+el.dataset.id));
+  });
+}
+
+// ============ СТАРТ ============
+renderPrograms();
+renderPath();
+</script>
+</body>
+</html>
