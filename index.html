@@ -658,15 +658,42 @@ dateBInput.addEventListener('change', () => {
   if(b > new Date()){ MEETING_DATE = b; updateTimer(); }
 });
 
-// ============ АВАТАРКИ ============
+// ============ АВАТАРКИ (с сохранением) ============
+function fileToBase64(file, callback){
+  const reader = new FileReader();
+  reader.onload = e => callback(e.target.result);
+  reader.readAsDataURL(file);
+}
+
 document.getElementById('uploadMe').addEventListener('change', e => {
   const file = e.target.files[0];
-  if(file) document.getElementById('avatarMe').src = URL.createObjectURL(file);
+  if(!file) return;
+  fileToBase64(file, base64 => {
+    document.getElementById('avatarMe').src = base64;
+    state.avatars = state.avatars || {};
+    state.avatars.me = base64;
+    saveState();
+  });
 });
+
 document.getElementById('uploadHer').addEventListener('change', e => {
   const file = e.target.files[0];
-  if(file) document.getElementById('avatarHer').src = URL.createObjectURL(file);
+  if(!file) return;
+  fileToBase64(file, base64 => {
+    document.getElementById('avatarHer').src = base64;
+    state.avatars = state.avatars || {};
+    state.avatars.her = base64;
+    saveState();
+  });
 });
+
+// Восстановить аватарки при загрузке
+setTimeout(() => {
+  if(state.avatars){
+    if(state.avatars.me) document.getElementById('avatarMe').src = state.avatars.me;
+    if(state.avatars.her) document.getElementById('avatarHer').src = state.avatars.her;
+  }
+}, 100);
 
 // ============ СОХРАНЕНИЕ ============
 const STORAGE_KEY = 'mezhdu-nami-v1';
