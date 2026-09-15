@@ -650,14 +650,61 @@ function toLocalInput(date){
 }
 const dateAInput = document.getElementById('dateA');
 const dateBInput = document.getElementById('dateB');
+
+// Загружаем сохранённую дату встречи
+(function restoreMeetingDate(){
+  try{
+    const saved = localStorage.getItem('meeting-date-v1');
+    if(saved){
+      const d = new Date(saved);
+      if(d > new Date()) MEETING_DATE = d;
+    }
+  }catch(e){}
+})();
+
 dateAInput.value = toLocalInput(new Date());
 dateBInput.value = toLocalInput(MEETING_DATE);
 
 dateBInput.addEventListener('change', () => {
   const b = new Date(dateBInput.value);
-  if(b > new Date()){ MEETING_DATE = b; updateTimer(); }
+  if(b > new Date()){
+    MEETING_DATE = b;
+    localStorage.setItem('meeting-date-v1', MEETING_DATE.toISOString());
+    updateTimer();
+  }
 });
+// ============ СОХРАНЕНИЕ ============
+const STORAGE_KEY = 'mezhdu-nami-v1';
+let state = { names:{me:'Сергей', her:'Вера'}, paths:[], streak:0, lastVisit:null, avatars:{} };
 
+function loadState(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(raw) state = Object.assign({}, state, JSON.parse(raw));
+  }catch(e){}
+}
+function saveState(){
+  try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }catch(e){}
+}
+loadState();
+
+if(state.names.me) document.getElementById('nameMe').value = state.names.me;
+if(state.names.her) document.getElementById('nameHer').value = state.names.her;
+document.getElementById('nameMe').addEventListener('input', e => { state.names.me = e.target.value; saveState(); });
+document.getElementById('nameHer').addEventListener('input', e => { state.names.her = e.target.value; saveState(); });
+
+(function updateStreak(){
+  const today = new Date().toDateString();
+  if(state.lastVisit !== today){
+    const y = new Date(Date.now() - 86400000).toDateString();
+    state.streak = (state.lastVisit === y) ? (state.streak + 1) : 1;
+    state.lastVisit = today;
+    saveState();
+  }
+  const word = state.streak === 1 ? 'день' : (state.streak < 5 ? 'дня' : 'дней');
+  document.getElementById('streakBadge').textContent = '🔥 Streak: ' + state.streak + ' ' + word;
+})();
+  
 // ============ АВАТАРКИ (с сохранением) ============
 function fileToBase64(file, callback){
   const reader = new FileReader();
@@ -694,39 +741,7 @@ setTimeout(() => {
     if(state.avatars.her) document.getElementById('avatarHer').src = state.avatars.her;
   }
 }, 100);
-
-// ============ СОХРАНЕНИЕ ============
-const STORAGE_KEY = 'mezhdu-nami-v1';
-let state = { names:{me:'Миша', her:'Аня'}, paths:[], streak:0, lastVisit:null };
-
-function loadState(){
-  try{
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if(raw) state = Object.assign({}, state, JSON.parse(raw));
-  }catch(e){}
-}
-function saveState(){
-  try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }catch(e){}
-}
-loadState();
-
-if(state.names.me) document.getElementById('nameMe').value = state.names.me;
-if(state.names.her) document.getElementById('nameHer').value = state.names.her;
-document.getElementById('nameMe').addEventListener('input', e => { state.names.me = e.target.value; saveState(); });
-document.getElementById('nameHer').addEventListener('input', e => { state.names.her = e.target.value; saveState(); });
-
-(function updateStreak(){
-  const today = new Date().toDateString();
-  if(state.lastVisit !== today){
-    const y = new Date(Date.now() - 86400000).toDateString();
-    state.streak = (state.lastVisit === y) ? (state.streak + 1) : 1;
-    state.lastVisit = today;
-    saveState();
-  }
-  const word = state.streak === 1 ? 'день' : (state.streak < 5 ? 'дня' : 'дней');
-  document.getElementById('streakBadge').textContent = '🔥 Streak: ' + state.streak + ' ' + word;
-})();
-
+  
 // ============ ФИЛЬТРЫ ============
 let currentDir = 'all';
 let currentDur = 'all';
